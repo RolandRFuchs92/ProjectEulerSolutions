@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MultiplesOfThreeAndFive.cs" />
+    <Compile Include="ConsoleInteractions.cs" />
+    <Compile Include="Interfaces\IShowResults.cs" />
+    <Compile Include="Model\SolutionModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionList.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

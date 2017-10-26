@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Moo\MultiplesOfThreeAndFiveSolutions.cs" />
+    <Compile Include="EvenFibonacciNumbersSolutions.cs" />
+    <Compile Include="Interfaces\ISolutionsContract.cs" />
+    <Compile Include="LargestPrimeFactorSolution.cs" />
+    <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

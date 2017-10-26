@@ -18,7 +18,7 @@ namespace ProjectEulerSolutions.Controllers.Api
             var ans = new Solution1Dto
             {
                 Answer = a.Solution(),
-                Problem = a._getProblem
+                Problem = a.ProblemDescription
             };
             return ans;
         }
