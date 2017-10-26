@@ -8,14 +8,12 @@ namespace SolutionsAssembly
 {
     public class LargestPrimeFactorSolution : ISolutionsContract
     {
-        public string ProblemName {
-            get { return "Largest Prime Factor"; }
-        }
-        public string ProblemDescription {
-            get { return "The prime factors of 13195 are 5, 7, 13 and 29.\r\n" +
-                            "What is the largest prime factor of the number 600851475143?"; }
-        }
-        public int ProblemNumber { get { return 3; } }
+
+        public string ProblemName => "Largest Prime Factor";
+				public string ProblemDescription => "The prime factors of 13195 are 5, 7, 13 and 29.\r\n" +
+																						 "What is the largest prime factor of the number 600851475143?"; 
+        public int ProblemNumber => 3; 
+
 
         public int Solution()
         {
