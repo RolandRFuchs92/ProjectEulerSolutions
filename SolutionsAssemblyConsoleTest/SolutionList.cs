@@ -20,6 +20,7 @@ namespace SolutionsAssemblyConsoleTest
             solutionList.Add(new LargestPrimeFactorSolution());
             solutionList.Add(new LargestPalindromeProductSolution());
 						solutionList.Add(new SmallestMultiple());
+						solutionList.Add(new SumSquareDifference());
         }
 
     }
