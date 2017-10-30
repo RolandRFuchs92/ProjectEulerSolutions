@@ -19,6 +19,7 @@ namespace SolutionsAssemblyConsoleTest
             solutionList.Add(new EvenFibonacciNumbersSolutions());
             solutionList.Add(new LargestPrimeFactorSolution());
             solutionList.Add(new LargestPalindromeProductSolution());
+						solutionList.Add(new SmallestMultiple());
         }
 
     }
