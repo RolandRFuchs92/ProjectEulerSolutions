@@ -21,6 +21,7 @@ namespace SolutionsAssemblyConsoleTest
             solutionList.Add(new LargestPalindromeProductSolution());
 						solutionList.Add(new SmallestMultiple());
 						solutionList.Add(new SumSquareDifference());
+						solutionList.Add(new _10001stPrime());
         }
 
     }
