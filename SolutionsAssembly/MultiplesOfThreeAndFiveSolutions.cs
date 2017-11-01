@@ -15,9 +15,9 @@ namespace SolutionsAssembly
 		public string ProblemName => "Multiples Of Three and Five";
 		public int ProblemNumber => 1;
 
-		public int Solution()
+		public string Solution()
 		{
-			return ProblemSolution();
+			return ProblemSolution().ToString();
 		}
 
 		private int ProblemSolution()

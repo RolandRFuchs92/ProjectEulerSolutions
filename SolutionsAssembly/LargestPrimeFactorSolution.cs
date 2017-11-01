@@ -15,9 +15,9 @@ namespace SolutionsAssembly
         public int ProblemNumber => 3; 
 
 
-        public int Solution()
+        public string Solution()
         {
-            return ProblemSoltion();
+            return ProblemSoltion().ToString();
         }
 
         private int ProblemSoltion()

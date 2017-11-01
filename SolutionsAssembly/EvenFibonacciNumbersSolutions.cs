@@ -19,9 +19,9 @@ namespace SolutionsAssembly
 		public string ProblemName => "Even Fibanacci Number Product";
 		public int ProblemNumber => 2;
 
-		public int Solution()
+		public string Solution()
 		{
-			return ProblemSolution();
+			return ProblemSolution().ToString();
 		}
 
 		private int ProblemSolution()
