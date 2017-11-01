@@ -45,6 +45,7 @@
     <Compile Include="Interfaces\ISolutionsContract.cs" />
     <Compile Include="LargestPalindromeProductSolution.cs" />
     <Compile Include="LargestPrimeFactorSolution.cs" />
+    <Compile Include="LargestProductInAGrid.cs" />
     <Compile Include="LargestProductInASeries.cs" />
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
