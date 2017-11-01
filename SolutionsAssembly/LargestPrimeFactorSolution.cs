@@ -15,9 +15,9 @@ namespace SolutionsAssembly
         public int ProblemNumber => 3; 
 
 
-        public int Solution()
+        public long Solution()
         {
-            return ProblemSoltion();
+            return (long)ProblemSoltion();
         }
 
         private int ProblemSoltion()

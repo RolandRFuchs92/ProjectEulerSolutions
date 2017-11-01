@@ -13,9 +13,9 @@ namespace SolutionsAssembly
 		public string ProblemName => "Smallest Multiple";
 		public int ProblemNumber => 5;
 
-		public int Solution()
+		public long Solution()
 		{
-			return ProblemSolution(1, 20);
+			return (int)ProblemSolution(1, 20);
 		}
 
 		private int ProblemSolution(int startRange, int endRange)

@@ -13,7 +13,7 @@ namespace SolutionsAssembly
 		public string ProblemName => "10001st Prime";
 		public int ProblemNumber => 7;
 
-		public int Solution()
+		public long Solution()
 		{
 			return ProblemSolution(10001);
 		}

@@ -17,9 +17,9 @@ namespace SolutionsAssembly
 		public string ProblemName => "Sum Square Difference";
 		public int ProblemNumber => 6;
 
-		public int Solution()
+		public long Solution()
 		{
-			return ProblemSolution(1,100);
+			return (long)ProblemSolution(1,100);
 		}
 
 		private int ProblemSolution(int startRange, int endRange)
