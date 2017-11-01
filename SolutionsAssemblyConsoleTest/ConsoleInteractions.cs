@@ -34,7 +34,7 @@ namespace SolutionsAssemblyConsoleTest
                 Console.Clear();
                 Console.WriteLine($"{index}) {solution[index].ProblemName}\r\n\r\n");
                 Console.WriteLine(solution[index].ProblemDescription + "\r\n\r\n");
-                Console.WriteLine($"The answer is - {solution[index].Solution()}");
+                Console.WriteLine($"The answer is :\r\n {solution[index].Solution()}");
                 Console.ReadKey();
             }
         }

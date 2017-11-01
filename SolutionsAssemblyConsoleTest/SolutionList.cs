@@ -23,6 +23,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new SumSquareDifference());
 						solutionList.Add(new _10001stPrime());
 						solutionList.Add(new LargestProductInASeries());
+						solutionList.Add(new SpecialPythagoreanTriplet());
         }
 
     }
