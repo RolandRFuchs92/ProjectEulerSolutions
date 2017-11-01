@@ -24,6 +24,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new _10001stPrime());
 						solutionList.Add(new LargestProductInASeries());
 						solutionList.Add(new SpecialPythagoreanTriplet());
+						solutionList.Add(new SummationOfPrimes());
         }
 
     }

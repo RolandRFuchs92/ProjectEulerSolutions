@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SolutionsAssembly.Dry;
 
 namespace SolutionsAssembly
 {
@@ -20,25 +21,17 @@ namespace SolutionsAssembly
 
 		private int ProblemSolution(int primeInc)
 		{
+			var dry = new DryCode();
 			var ans = 0;
 			for (int inc = 2; ; inc++)
 			{
-				if (IsPrime(inc))
+				if (dry.IsPrime(inc))
 				{
 					ans++;
 					if (ans == primeInc)
 						return inc;
 				}
 			}
-		}
-
-		private bool IsPrime(int number)
-		{
-			for (var inc = 2; inc <= (number / 2); inc++)
-				if (number % inc == 0)
-					return false;
-
-			return true;
 		}
 	}
 }
