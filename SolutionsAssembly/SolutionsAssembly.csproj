@@ -48,6 +48,7 @@
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmallestMultiple.cs" />
+    <Compile Include="SpecialPythagoreanTriplet.cs" />
     <Compile Include="SumSquareDifference.cs" />
     <Compile Include="_10001stPrime.cs" />
   </ItemGroup>
