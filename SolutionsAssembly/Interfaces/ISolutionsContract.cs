@@ -8,7 +8,7 @@ namespace SolutionsAssembly
 {
     public interface ISolutionsContract
     {
-				long Solution();
+				string Solution();
         string ProblemName { get; }
         string ProblemDescription { get; }
         int ProblemNumber { get; }

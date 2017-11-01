@@ -15,11 +15,10 @@ namespace SolutionsAssembly
 		public string ProblemDescription => "A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.\r\n\r\n" +
 																				"Find the largest palindrome made from the product of two 3 - digit numbers.";
 		public int ProblemNumber => 4;
-		
 
-		public long Solution()
+		public string Solution()
 		{
-			return (long)ProblemSolution();
+			return ProblemSolution().ToString();
 		}
 
 		private int ProblemSolution()

@@ -40,14 +40,10 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 		public string ProblemName => "Largest Product in a Series";
 		public int ProblemNumber => 8;
 
-
-
-		public long Solution()
+		public string Solution()
 		{
-			return (long)SolutionProblem(13);
+			return SolutionProblem(13).ToString();
 		}
-
-
 		private long SolutionProblem(int adjacentLength)
 		{
 			long result = 0;
