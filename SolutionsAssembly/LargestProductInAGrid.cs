@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SolutionsAssembly
 {
-	class LargestProductInAGrid : ISolutionsContract
+	public class LargestProductInAGrid : ISolutionsContract
 	{
-
-		public string ProblemName => "Largest Product in a Grid"
-
+		public string ProblemName => "Largest Product in a Grid";
 		public string ProblemDescription =>
 			$@"In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
 
@@ -20,7 +18,6 @@ The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
 What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?";
 		public int ProblemNumber => 11;
-
 		public string grid =>
 @"08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -42,12 +39,73 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
+		private int[][] _arrayGrid
+		{
+			get
+			{
+				int [][]gridArray = grid.Split('\n')//splits the string line by line
+									.Select(t => t.Split(' ') //splits the new string lines by ' '  or spaces...
+									.Select(int.Parse)//parses all values to a string
+									.ToArray() //sets them to an array
+									).ToArray(); 
+				return gridArray;
+			}
+		}
+		private int arrayLength => _arrayGrid[0].Length;
+
 
 		public string Solution()
 		{
-			return "";
+			return ProblemSolution(4).ToString();
 		}
 
+
+
+		private long ProblemSolution(int len)
+		{
+			long ans = 0;
+			for (var row = 0; row < _arrayGrid.Length;row ++)
+			{
+				for(var col = 0; col < _arrayGrid[row].Length; col++)
+				{
+					long compare = DiagonalSums(row, col, len);
+					ans = compare > ans ? compare: ans;
+				}
+			}
+			return ans;
+		}
+
+		/// <summary>
+		/// check sum of consecutive numbers
+		/// </summary>
+		/// <param name="row"></param>
+		/// <param name="col"></param>
+		/// <returns></returns>
+
+		private long DiagonalSums(int row, int col, int len)
+		{
+			long diagDown = 1, diagUp = 1, hori = 1, vert = 1;
+			long diagDownA = 1, diagUpA = 1, horiA = 1, vertA = 1;
+			var isValidHori = col + (len - 1) >= arrayLength ? false : true;
+			var isValidVert = row + (len - 1) >= arrayLength ? false : true;
+
+
+			for (var a = 0; a < len; a++)
+			{
+
+				diagDown	= isValidHori && isValidVert ? _arrayGrid[row + a][col + a] : 0;
+				diagUp = isValidHori && isValidVert ? _arrayGrid[len - 1 - a][col + a] : 0;
+				hori			= isValidHori ? _arrayGrid[row][col + a] : 0;
+				vert			= isValidVert ? _arrayGrid[row + a][col] : 0;
+
+				diagDownA *= diagDown;
+				diagUpA *= diagUp;
+				horiA *= hori;
+				vertA *= vert;
+			}
+
+			return new[] { diagDownA, diagUpA, horiA, vertA }.Max();
+		}
 
 	}
 }
