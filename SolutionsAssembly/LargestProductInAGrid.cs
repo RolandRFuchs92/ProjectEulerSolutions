@@ -39,6 +39,13 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
+
+		//		public string grid =>
+		//@"49 49 99 40
+		//81 49 31 73
+		//52 70 95 23
+		//22 31 16 71";
+
 		private int[][] _arrayGrid
 		{
 			get
@@ -81,7 +88,6 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 		/// <param name="row"></param>
 		/// <param name="col"></param>
 		/// <returns></returns>
-
 		private long DiagonalSums(int row, int col, int len)
 		{
 			long diagDown = 1, diagUp = 1, hori = 1, vert = 1;
@@ -89,16 +95,16 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 			var isValidHori = col + (len - 1) >= arrayLength ? false : true;
 			var isValidVert = row + (len - 1) >= arrayLength ? false : true;
 
+			if (!isValidVert && !isValidHori) return 0;
 
 			for (var a = 0; a < len; a++)
 			{
-
-				diagDown	= isValidHori && isValidVert ? _arrayGrid[row + a][col + a] : 0;
-				diagUp = isValidHori && isValidVert ? _arrayGrid[len - 1 - a][col + a] : 0;
+				diagDown = 
+				diagUp		= isValidHori && isValidVert ? _arrayGrid[row + (len - 1) - a][col + a] : 0;
 				hori			= isValidHori ? _arrayGrid[row][col + a] : 0;
 				vert			= isValidVert ? _arrayGrid[row + a][col] : 0;
 
-				diagDownA *= diagDown;
+				diagDownA *= isValidHori && isValidVert ? _arrayGrid[row + a][col + a] : 0;
 				diagUpA *= diagUp;
 				horiA *= hori;
 				vertA *= vert;
@@ -106,6 +112,5 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 
 			return new[] { diagDownA, diagUpA, horiA, vertA }.Max();
 		}
-
 	}
 }
