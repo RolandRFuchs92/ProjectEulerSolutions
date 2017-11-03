@@ -30,12 +30,46 @@ What is the value of the first triangle number to have over five hundred divisor
 
 		public string Solution()
 		{
-			throw new NotImplementedException();
+
+
+			return "";
 		}
+
+		private long ProblemSolution(int devisors)
+		{
+			long inc = 1;
+			long count = 0;
+
+			while (count != devisors)
+			{
+				long triangleNum = NthTriangularNumber(inc);
+				count = countDevisors(triangleNum, devisors);
+
+				inc++;
+			}
+
+			return 0;
+		}
+
+		private long countDevisors(long NthTri, int devisors)
+		{
+			var count = 1;
+
+			if (Dry.DryCode.IsPrime(NthTri)) return 0;
+
+			for (int i = 0; i >= NthTri / 2; i++) //if i is more then half move along
+			{
+				count += NthTri % i == 0 ? 1 : 0; // if NthTrie devisible by i, then increment
+				if (count >= devisors) //if count is more then devisors return the count cause you win
+					return count;
+			}
+			return count;
+		}
+
 
 		public long NthTriangularNumber(long nth)
 		{
-			return nth*(nth + 1) / 2;
+			return nth * (nth + 1) / 2;
 		}
 	}
 }

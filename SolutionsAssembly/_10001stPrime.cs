@@ -21,11 +21,10 @@ namespace SolutionsAssembly
 
 		private int ProblemSolution(int primeInc)
 		{
-			var dry = new DryCode();
 			var ans = 0;
 			for (int inc = 2; ; inc++)
 			{
-				if (dry.IsPrime(inc))
+				if (Dry.DryCode.IsPrime(inc))
 				{
 					ans++;
 					if (ans == primeInc)
