@@ -23,7 +23,6 @@ Find the sum of all the primes below two million.";
 
 		private long ProblemSolution(int numbersBelow)
 		{
-			var dry = new DryCode();
 			long ans = 0;
 			for (var a = 2; a < numbersBelow; a++)
 				ans += Dry.DryCode.IsPrime(a) ? a : 0;

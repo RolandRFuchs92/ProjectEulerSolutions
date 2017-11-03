@@ -26,6 +26,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new SpecialPythagoreanTriplet());
 						solutionList.Add(new SummationOfPrimes());
 						solutionList.Add(new LargestProductInAGrid());
+						solutionList.Add(new HighlyDivisibleTriangularNumbers());
         }
 
     }

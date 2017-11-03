@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SolutionsAssembly
 {
-	class HighlyDivisibleTriangularNumbers : ISolutionsContract
+	public class HighlyDivisibleTriangularNumbers : ISolutionsContract
 	{
 		public string ProblemName => "Highly Divisible Triangular Number";
 		public string ProblemDescription =>
@@ -30,43 +30,42 @@ What is the value of the first triangle number to have over five hundred divisor
 
 		public string Solution()
 		{
-
-
-			return "";
+			return ProblemSolution(500).ToString();
 		}
 
 		private long ProblemSolution(int devisors)
 		{
 			long inc = 1;
 			long count = 0;
-
-			while (count != devisors)
+			long triangleNum = 0;
+			while (count < devisors)
 			{
-				long triangleNum = NthTriangularNumber(inc);
+				triangleNum = NthTriangularNumber(inc);
 				count = countDevisors(triangleNum, devisors);
 
 				inc++;
 			}
-
-			return 0;
+			return triangleNum;
 		}
 
 		private long countDevisors(long NthTri, int devisors)
 		{
-			var count = 1;
+			var count = 0;
 
 			if (Dry.DryCode.IsPrime(NthTri)) return 0;
+			if (NthTri == 1) return 1;															//the "Duh" exception
 
-			for (int i = 0; i >= NthTri / 2; i++) //if i is more then half move along
-			{
-				count += NthTri % i == 0 ? 1 : 0; // if NthTrie devisible by i, then increment
-				if (count >= devisors) //if count is more then devisors return the count cause you win
-					return count;
-			}
-			return count;
+			for (int i = 1; count < devisors && i < (NthTri/2); i++)
+				count += NthTri % i == 0 ? 1 : 0;											// if NthTrie devisible by i, then increment
+
+			return count;																						// + 1 cause last number div its self
 		}
 
-
+		/// <summary>
+		/// Formula to Aquire a Triangular number.
+		/// </summary>
+		/// <param name="nth">passing a number here will yield the corresponding triangular number.</param>
+		/// <returns></returns>
 		public long NthTriangularNumber(long nth)
 		{
 			return nth * (nth + 1) / 2;
