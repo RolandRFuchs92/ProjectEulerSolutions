@@ -32,5 +32,10 @@ What is the value of the first triangle number to have over five hundred divisor
 		{
 			throw new NotImplementedException();
 		}
+
+		public long NthTriangularNumber(long nth)
+		{
+			return nth*(nth + 1) / 2;
+		}
 	}
 }
