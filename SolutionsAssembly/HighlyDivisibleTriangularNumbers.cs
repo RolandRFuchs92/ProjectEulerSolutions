@@ -30,10 +30,11 @@ What is the value of the first triangle number to have over five hundred divisor
 
 		public string Solution()
 		{
-			return ProblemSolution(500).ToString();
+			return BruteForceProblemSolution(500).ToString();
 		}
 
-		private long ProblemSolution(int devisors)
+		#region  bruteforce solution...
+		private long BruteForceProblemSolution(int devisors)
 		{
 			long inc = 1;
 			long count = 0;
@@ -70,5 +71,34 @@ What is the value of the first triangle number to have over five hundred divisor
 		{
 			return nth * (nth + 1) / 2;
 		}
+		#endregion
+
+
+		//A less brute force solution for later when we've hopefully complete 50 euler problems...
+		//private string FastProblemSolution()
+		//{
+		//	int n = 3;
+		//	int Dn = 2;
+		//	int cnt = 0;
+		//	int n1, Dn1, i, exponenet;
+		//	int []primeArray = new int[1];
+
+		//	while (cnt <= 500)
+		//	{
+		//		n++;
+		//		n1 = n;
+		//		if (n1 % 2 ==0)
+		//			n1 = n1 / 2;
+
+		//		Dn1 = 1;
+		//		for (i = 1; i=P)
+
+		//	}
+
+
+		//	return "";
+		//}
+
+
 	}
 }
