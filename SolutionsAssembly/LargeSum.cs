@@ -14,7 +14,7 @@ namespace SolutionsAssembly
 		public string ProblemDescription => "Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.";
 		public int ProblemNumber => 13;
 		//linq solution => use a replace function and use the \n remainder to create an array
-		private int[][]_numberGrid => Dry.DryCode.StringTo2DArray(_rawNumberGrid);
+		private int[][]_numberGrid => Dry.DryCode.StringTo2DArray(_rawNumberGrid,1);
 
 		private string _rawNumberGrid => @"37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
@@ -125,24 +125,41 @@ namespace SolutionsAssembly
 		private string ProblemSolution(int len)
 		{
 			int [] columnsTotal = ColumnsTotal();
-
-			return "";
+			var Total = AddSummArray(columnsTotal);
+			return Total.Substring(0, len);
 		}
+
 
 		private int [] ColumnsTotal()
 		{
 			int[] columnsTotal = new int[_numberGrid[0].Length];
 
-			foreach (var row in _numberGrid)
+			foreach (int[] row in _numberGrid)
 			{
-				foreach (var col in row)
+				for (int i = 0; i < row.Length; i++)
 				{
-					var colIndex = 0;
-					columnsTotal[colIndex] += col;
+					columnsTotal[i] += row[i];
 				}
 			}
 
 			return columnsTotal;
+		}
+
+
+		private string AddSummArray(int[] columnsTotal)
+		{
+			string Total = "";
+			int savedVal = 0;
+
+			for (int col = columnsTotal.Length; col > 0; col--)
+			{
+				savedVal += columnsTotal[col-1];
+				string temp = savedVal.ToString();
+				Total = temp[temp.Length - 1] + Total;  //Right Most value, appended.
+				savedVal = int.Parse(temp.Substring(0, temp.Length -1));
+			}
+
+			return savedVal.ToString() + Total;
 		}
 
 	}

@@ -59,12 +59,18 @@ namespace SolutionsAssembly.Dry
 		/// <returns></returns>
 		public static int[][] StringTo2DArray(string grid, int groupingSize)
 		{
-			string[] rowArray = grid.Split('\n').ToArray();					//Cast the grid to multiple string rows.
-			int[][] gridArray = new int[rowArray.Length][];					//instantiate the grid to the number of rows.
+			string[] rowArray = grid.Replace("\r","").Split('\n').ToArray();					//Cast the grid to multiple string rows.
+			int[][] gridArray = new int[rowArray.Length][];         //instantiate the grid to the number of rows.
 
-			foreach (var row in rowArray)														//Run through each Row
-				for(int i = 0; i < (row.Length/ groupingSize); i++)		//Run through each column in row
-					gridArray[Array.IndexOf(rowArray, row)][i] = int.Parse(row.Substring(i*groupingSize, groupingSize)); //Add column value to column.
+			foreach (var row in rowArray)                           //Run through each Row
+			{
+				int []arr = new int[row.Length];
+				for (int i = 0; i < (row.Length / groupingSize); i++)//Run through each column in row
+				{
+					arr[i] = int.Parse(row.Substring(i * groupingSize, groupingSize)); //Add column value to column.
+				}
+				gridArray[Array.IndexOf(rowArray, row)] = arr;
+			}	
 
 			return gridArray;
 		}
