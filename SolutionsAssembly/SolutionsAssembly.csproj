@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Dry\DryCode.cs" />
     <Compile Include="EvenFibonacciNumbersSolutions.cs" />
+    <Compile Include="HighlyDivisibleTriangularNumbers.cs" />
     <Compile Include="Interfaces\ISolutionsContract.cs" />
     <Compile Include="LargestPalindromeProductSolution.cs" />
     <Compile Include="LargestPrimeFactorSolution.cs" />

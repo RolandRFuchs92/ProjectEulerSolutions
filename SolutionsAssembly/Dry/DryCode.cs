@@ -14,7 +14,12 @@ namespace SolutionsAssembly.Dry
 		/// </summary>
 		/// <param name="number"></param>
 		/// <returns></returns>
-		public bool IsPrime(int number)
+		public static bool IsPrime(int number)
+		{
+			return IsPrime((long)number);
+		}
+
+		public static bool IsPrime(long number)
 		{
 			if (number == 2) return true;
 			if (number == 1 || number % 2 == 0) return false;
@@ -26,5 +31,6 @@ namespace SolutionsAssembly.Dry
 
 			return true;
 		}
+
 	}
 }
