@@ -40,33 +40,13 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48";
 
-		//		public string grid =>
-		//@"49 49 99 40
-		//81 49 31 73
-		//52 70 95 23
-		//22 31 16 71";
-
-		private int[][] _arrayGrid
-		{
-			get
-			{
-				int [][]gridArray = grid.Split('\n')//splits the string line by line
-									.Select(t => t.Split(' ') //splits the new string lines by ' '  or spaces...
-									.Select(int.Parse)//parses all values to a string
-									.ToArray() //sets them to an array
-									).ToArray(); 
-				return gridArray;
-			}
-		}
+		private int[][] _arrayGrid => Dry.DryCode.StringTo2DArray(grid);
 		private int arrayLength => _arrayGrid[0].Length;
-
 
 		public string Solution()
 		{
 			return ProblemSolution(4).ToString();
 		}
-
-
 
 		private long ProblemSolution(int len)
 		{
