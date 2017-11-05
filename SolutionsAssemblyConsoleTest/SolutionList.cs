@@ -30,6 +30,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new LargeSum());
 						solutionList.Add(new LongestCollatzSequence());
 						solutionList.Add(new LatticePath());
+						solutionList.Add(new PowerDigitSum());
         }
 
     }
