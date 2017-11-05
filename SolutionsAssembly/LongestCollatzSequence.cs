@@ -29,34 +29,36 @@ NOTE: Once the chain starts the terms are allowed to go above one million.";
 			return ProblemSolution(1000000).ToString();
 		}
 
-		private int ProblemSolution(int maxNumber)
+		private long ProblemSolution(int maxNumber)
 		{
-			var compareNum = 0;
-			for (int i = 0; i < maxNumber; i++)
+			long compareNum = 0;
+			int startNum = 0;
+			for (int i = maxNumber; i > 0; i--)
 			{
-				compareNum = countTerm(13) > compareNum ? countTerm : compareNum;
+				var countTerm = CountTerm(i);
+				startNum = countTerm > compareNum ? i : startNum;
+				compareNum = countTerm > compareNum ? countTerm : compareNum;
 			}
 
-			return 0 ;
+			return startNum;
 		}
 
 
-		private int countTerm(int startTerm)
+		private int CountTerm(int startTerm)
 		{
-			var ans = startTerm;
+			long ans = startTerm;
 			int count = 0;
 
-			while (ans >= 1)
+			while (ans != 1)
 			{
 				count++;
-				Console.Write(ans + " > ");
 				ans = ForkFormulas(ans);
 			}
 
 			return ++count;
 		}
 
-		private int ForkFormulas(int pos)
+		private long ForkFormulas(long pos)
 		{
 			if (pos % 2 == 0)
 				return EvenFormula(pos);
@@ -64,14 +66,19 @@ NOTE: Once the chain starts the terms are allowed to go above one million.";
 				return OddFormula(pos);
 		}
 
-		private int EvenFormula(int num)
+		private long EvenFormula(long num)
 		{
 			return num / 2;
 		}
 
-		private int OddFormula(int num)
+		/// <summary>
+		/// Shortcut to Colats Formula...
+		/// </summary>
+		/// <param name="num"></param>
+		/// <returns></returns>
+		private long OddFormula(long num)
 		{
-			return 3 * num + 1;
+			return (3 * num + 1)/2;// Div 2 is magical...
 		}
 
 	}
