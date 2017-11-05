@@ -29,6 +29,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new HighlyDivisibleTriangularNumbers());
 						solutionList.Add(new LargeSum());
 						solutionList.Add(new LongestCollatzSequence());
+						solutionList.Add(new LatticePath());
         }
 
     }

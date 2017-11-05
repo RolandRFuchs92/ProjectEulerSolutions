@@ -49,6 +49,7 @@
     <Compile Include="LargestProductInAGrid.cs" />
     <Compile Include="LargestProductInASeries.cs" />
     <Compile Include="LargeSum.cs" />
+    <Compile Include="LatticePath.cs" />
     <Compile Include="LongestCollatzSequence.cs" />
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
