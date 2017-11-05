@@ -28,6 +28,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new LargestProductInAGrid());
 						solutionList.Add(new HighlyDivisibleTriangularNumbers());
 						solutionList.Add(new LargeSum());
+						solutionList.Add(new LongestCollatzSequence());
         }
 
     }
