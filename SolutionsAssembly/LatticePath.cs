@@ -40,7 +40,7 @@ How many such routes are there through a 20×20 grid?";
 					latticGrid[col][row] = latticGrid[col][row] == 0 ? latticGrid[row - 1][col] + latticGrid[row][col - 1] : latticGrid[col][row]; //verticle setup
 				}
 			}
-			plotToTextFile(latticGrid);
+			//plotToTextFile(latticGrid);
 			return latticGrid[gridSize-1][gridSize-1];
 		}
 
