@@ -52,6 +52,7 @@
     <Compile Include="LatticePath.cs" />
     <Compile Include="LongestCollatzSequence.cs" />
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
+    <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SmallestMultiple.cs" />
     <Compile Include="SpecialPythagoreanTriplet.cs" />
