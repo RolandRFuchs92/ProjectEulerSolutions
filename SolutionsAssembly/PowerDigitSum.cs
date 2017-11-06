@@ -17,13 +17,13 @@ What is the sum of the digits of the number 21000?";
 
 		public string Solution()
 		{
-			return ProblemSolution(10);
+			return ProblemSolution(1000).ToString();
 		}
 
-		private string ProblemSolution(int power)
+		private int ProblemSolution(int power)
 		{
 			string powerHolder = PowerCalculator(2, power);
-			return powerHolder;
+			return DigitSum(powerHolder);
 		}
 
 		private string PowerCalculator(int coefficient,int powerOf)
@@ -31,21 +31,55 @@ What is the sum of the digits of the number 21000?";
 			string powerHolder = coefficient.ToString();
 			int savedVal = 0;
 
-			for (int power = 0; power < powerOf; power++) //run through the current value "x" number of times
+			for (int power = 0; power < (powerOf-1); power++) //run through the current value "x" number of times
 			{
-				string tempPowerHolder = "";
-				for (int span = powerHolder.Length; span > 0 || savedVal > 0; span--) //double the right most value for now
-				{
-					int RightMostValue = int.Parse(powerHolder[span-1].ToString());
-					savedVal += (RightMostValue + RightMostValue);
-					int savedValLen = savedVal.ToString().Length -1;
-					tempPowerHolder = savedVal.ToString()[savedValLen].ToString() +tempPowerHolder;
-					savedVal = savedValLen != 0 ?	 int.Parse(savedVal.ToString().Substring(0, savedValLen)) : 0;
-				}
-				powerHolder = tempPowerHolder;
+				powerHolder = PowerResult(powerHolder);
 			}
 
 			return powerHolder;
 		}
+
+		private string PowerResult(string currentVal)
+		{
+			int savedVal = 0;
+			string newVal = "";
+
+			for (int pos = currentVal.Length; pos > 0 ; pos--)
+			{
+				int rightVal = int.Parse(currentVal[pos - 1].ToString());
+				savedVal += rightVal + rightVal;
+				newVal = (savedVal % 10).ToString() +newVal;
+				savedVal /= 10;
+			}
+
+			newVal = savedVal + newVal;
+
+			return CleansePrefixedZeros(newVal);
+		}
+
+		private string CleansePrefixedZeros(string val)
+		{
+			var checkLeft = 0;
+			var inc = 0;
+			while (checkLeft == 0)
+			{
+				checkLeft = int.Parse(val[inc].ToString());
+				inc++;
+			}
+
+			return val.Substring(inc - 1);
+		}
+
+		private int DigitSum(string poweredVal)
+		{
+			int val = 0;
+			foreach (var chr in poweredVal)
+			{
+				val += int.Parse(chr.ToString());
+			}
+
+			return val;
+		}
+
 	}
 }
