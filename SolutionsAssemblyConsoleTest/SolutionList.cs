@@ -31,6 +31,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new LongestCollatzSequence());
 						solutionList.Add(new LatticePath());
 						solutionList.Add(new PowerDigitSum());
+						solutionList.Add(new NumberLetterCounts());
         }
 
     }
