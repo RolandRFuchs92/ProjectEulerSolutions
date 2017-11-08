@@ -32,6 +32,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new LatticePath());
 						solutionList.Add(new PowerDigitSum());
 						solutionList.Add(new NumberLetterCounts());
+						solutionList.Add(new MaximumPathSum1());
         }
 
     }
