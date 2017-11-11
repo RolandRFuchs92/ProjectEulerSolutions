@@ -25,7 +25,15 @@ namespace SolutionsAssembly
 
 		NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route.However, Problem 67, is the same challenge with a triangle containing one-hundred rows; it cannot be solved by brute force, and requires a clever method! ;o)";
 		public int ProblemNumber => 18;
-		private string _pyramidHolder => 
+
+		//private string _pyramidHolder => 
+		//@"3
+		//	7 4
+		//	2 4 6
+		//	8 5 9 3";
+
+
+		private string _pyramidHolder =>
 		@"75
 			95 64
 			17 47 82
@@ -76,32 +84,106 @@ namespace SolutionsAssembly
 		{
 			int colPos = 0;
 			int ans = _pyramidArray[0][0];
-			for (int row = 0; row < _pyramidHolder.Length; row++)
-			{
-				int[][] miniTri = new int [3][];
-				miniTri[0] = _pyramidArray[row + 1];
-				miniTri[1] = _pyramidArray[row + 2];
-				//miniTri[2] = _pyramidArray[row + 3];
 
-				ans += GetBiggestPathValues(miniTri, colPos);
+			for (int row = 0; row < _pyramidArray.Length; row++)	//each row
+			{
+
+				int[][] triRows = new int [4][];										//set triangle rows
+				triRows[0] = _pyramidArray[row];
+				triRows[1] = _pyramidArray[row + 1];
+				triRows[2] = _pyramidArray[row + 2];
+				triRows[3] = _pyramidArray[row + 3];
+
+				int [][] miniTri =  GetMiniTri(triRows, colPos);		//get the miniTri
+																																						//int permuTation = (int)Math.Pow(2, miniTri.Length - 1);
+				int[] permutationArray = GetPermuations(miniTri);
+				colPos += GetNewColPosition(permutationArray);
+				Console.WriteLine($"{colPos} - {_pyramidArray[row + 1][colPos]}"  );
+				if ((row + 4) >= _pyramidArray.Length)
+					return ans += permutationArray.Max();
+																																						//get permuations of tri
+																																						//pick biggest...
+				ans += _pyramidArray[row+1][colPos];
 			}
 
 			return ans;
 		}
 
-		private int GetBiggestPathValues(int [][]tri, int colPos)
+
+		private int[] GetPermuations(int [][] miniTri)
 		{
-			int ans = 0;
-			int []opt = new int[2];
-			opt[0] = tri[0][colPos];
-			opt[1] = tri[0][colPos - 1];
-			opt[2] = tri[0][colPos + 1];
+			//int [] permutations = new int[(int)Math.Pow(2, miniTri.Length -1)];
+			int [] permutations = new int[miniTri.Length -1];
 
-			ans += opt.Max();
+			permutations[0] = miniTri[0][0] + miniTri[1][0] + miniTri[2][0];
+			permutations[1] = miniTri[0][0] + miniTri[1][0] + miniTri[2][1];
+			permutations[2] = miniTri[0][0] + miniTri[1][1] + miniTri[2][1];
+			permutations[3] = miniTri[0][0] + miniTri[1][1] + miniTri[2][2];
 
-			//opt
 
+			//Work out how to do this programatically dont do it with hardcode...
+			//permutations[0] = miniTri[0][0] + miniTri[1][0] + miniTri[2][0] + miniTri[3][0];
+			//permutations[1] = miniTri[0][0] + miniTri[1][0] + miniTri[2][0] + miniTri[3][1];
+			//permutations[2] = miniTri[0][0] + miniTri[1][0] + miniTri[2][1] + miniTri[3][1];
+			//permutations[3] = miniTri[0][0] + miniTri[1][0] + miniTri[2][1] + miniTri[3][1];
+			//permutations[4] = miniTri[0][0] + miniTri[1][1] + miniTri[2][1] + miniTri[3][2];
+			//permutations[5] = miniTri[0][0] + miniTri[1][1] + miniTri[2][1] + miniTri[3][2];
+			//permutations[6] = miniTri[0][0] + miniTri[1][1] + miniTri[2][2] + miniTri[3][2];
+			//permutations[7] = miniTri[0][0] + miniTri[1][1] + miniTri[2][2] + miniTri[3][3];
+
+			return permutations;
+		}
+
+
+
+		private int GetNewColPosition(int []permutionArray)
+		{
+			int colPos = 0,
+					temp = 0, 
+					current = 0, 
+					permuLength = permutionArray.Length-1;
+
+			temp = permutionArray[0];
+
+			for (int inc = 0; inc < permuLength+1; inc++)
+			{
+				if (permutionArray[inc] > temp)
+				{
+					temp = permutionArray[inc];
+					if (inc > permuLength)
+						return 1;
+				}
+			}
 			return 0;
 		}
+
+		
+		/// <summary>
+		/// creates a mini triangle from the given 2D Array
+		/// </summary>
+		/// <param name="triRows">2D array</param>
+		/// <param name="colPos">Starting column in the 2D array</param>
+		/// <returns></returns>
+		private int[][] GetMiniTri(int[][] triRows, int colPos)
+		{
+			int [][]miniTri = new int[triRows.Length][];
+
+			for (int row = 0; row < triRows.Length; row++) //each row
+			{
+				int [] InitRow = new int[triRows[row].Length];
+				for (int col = 0; col < (triRows[row].Length - colPos); col++) //columns from column position => length - column position to avoid out of range excep
+				{
+					InitRow[col] = triRows[row][colPos + col]; //init rows 
+				}
+				miniTri[row]= InitRow; //setup miniTri
+			}
+			return miniTri;
+		}
+	}
+
+	class PosModel
+	{
+		public int colPos { get; set; }
+		public int ans { get; set; }
 	}
 }
