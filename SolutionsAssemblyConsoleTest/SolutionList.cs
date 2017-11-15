@@ -33,6 +33,8 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new PowerDigitSum());
 						solutionList.Add(new NumberLetterCounts());
 						solutionList.Add(new MaximumPathSum1());
+						solutionList.Add(new CountingSundays());
+
         }
 
     }
