@@ -44,6 +44,7 @@
     <Compile Include="CountingSundays.cs" />
     <Compile Include="Dry\DryCode.cs" />
     <Compile Include="EvenFibonacciNumbersSolutions.cs" />
+    <Compile Include="FactorialDigitSum.cs" />
     <Compile Include="HighlyDivisibleTriangularNumbers.cs" />
     <Compile Include="Interfaces\ISolutionsContract.cs" />
     <Compile Include="LargestPalindromeProductSolution.cs" />

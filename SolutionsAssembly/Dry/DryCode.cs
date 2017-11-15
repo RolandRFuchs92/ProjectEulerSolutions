@@ -104,5 +104,14 @@ namespace SolutionsAssembly.Dry
 
 			return stringPart;
 		}
+
+		public static int StringDigitSum(string longNumberString)
+		{
+			int sumString = 0;
+			foreach (var chr in longNumberString)
+				sumString += int.Parse(chr.ToString());
+
+			return sumString;
+		}
 	}
 }
