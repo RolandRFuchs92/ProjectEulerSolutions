@@ -34,7 +34,7 @@ namespace SolutionsAssemblyConsoleTest
 						solutionList.Add(new NumberLetterCounts());
 						solutionList.Add(new MaximumPathSum1());
 						solutionList.Add(new CountingSundays());
-
+						solutionList.Add(new FactorialDigitSum());
         }
 
     }
