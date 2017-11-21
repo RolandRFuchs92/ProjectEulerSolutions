@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,84 +24,43 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 		public string Solution()
 		{
-			return ProblemSolution().ToString();
+			return ProblemSolution(10000).ToString();
 		}
 
-		private long ProblemSolution()
+		private long ProblemSolution(int max)
 		{
-			long total = 0;
-			for (int n = 2; n < 10000; n++)
+			return IsAmicable(max);
+		}
+
+
+		private long IsAmicable(int max)
+		{
+			List<int> amicableList = new List<int>();
+
+			for (var n = 1; n < max+1; n++)
 			{
-				int [] a = FindAmicableNumber(n);
-				total += a != null ? a.Sum() : 0;
+				if (amicableList.IndexOf(n) > 0) continue;											// if we have this number in the amicable list then proceed else skip
+
+				var properSumList = ProperDevisors(n);													// get proper devisors
+				if (properSumList.Count() < 3) continue;												// if prime skip
+				var properSum = properSumList.Sum();
+
+				if (properSum == n ) continue;
+				var partnerSum = ProperDevisors(properSum).Sum();								// get the partner sum
+
+				if (n != partnerSum) continue;																	// if they == then add to list else skip
+					amicableList.Add(n);
+					amicableList.Add(properSumList.Sum());
 			}
-				
 
-			return total;
+			return amicableList.Sum();
 		}
 
-		private int[] FindAmicableNumber(int n)
+		private IEnumerable<int> ProperDevisors(int to)
 		{
-			int [] amicableNumbers = FindEulerAmicableNumber(n)?? FindQurraAmicableNumber(n);
-			return amicableNumbers;
+			return Enumerable.Range(1, to / 2).Where(divisor => to % divisor == 0).ToList(); ;
 		}
-
-		#region Use Ammicable Theorems
-		private int[] FindEulerAmicableNumber(int n)
-		{
-			int[] amicablePair = new int[2];
-			var eulerP = GetEulerPValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-			var eulerQ = GetEulerQValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-			var eulerR = GetEulerRValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-
-			if (IsPrimeQPRValues(eulerP, eulerQ, eulerR))
-			{
-				amicablePair[0] = (int)Math.Pow(2, n) * eulerP * eulerQ;
-				amicablePair[1] = (int)Math.Pow(2, n) * eulerR;
-
-				Console.WriteLine($"Amicable Numbers > {amicablePair[0]} > {amicablePair[1]}");
-				return amicablePair;
-			}
-			return null;
-		}
-
-		private int[] FindQurraAmicableNumber(int n)
-		{
-			int[] amicablePair = new int[2];
-			var qurraP = GetQurraPValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-			var qurraQ = GetQurraQValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-			var qurraR = GetQurraRValue(n);//Figure out Delegates and use them here, this can all be 1 function...
-
-			if (IsPrimeQPRValues(qurraP, qurraQ, qurraR))
-			{
-				amicablePair[0] = (int)Math.Pow(2, n) * qurraP * qurraQ;
-				amicablePair[1] = (int)Math.Pow(2, n) * qurraR;
-
-				Console.WriteLine($"Amicable Numbers > {amicablePair[0]} > {amicablePair[1]}");
-				return amicablePair;
-			}
-			return null;
-		}
-		#endregion
-
-		#region Thabit ibn Qurra Theorem 
-		private int GetQurraPValue(int n)
-		{
-			return (int)(3 * Math.Pow(2, n - 1) - 1);
-		}
-
-
-		private int GetQurraQValue(int n)
-		{
-			return (int) (3 * Math.Pow(2, n) - 1);
-		}
-
-		private int GetQurraRValue(int n)
-		{
-			return (int) (3 * Math.Pow(2, 2 * n - 1) - 1);
-		}
-		#endregion
-
+		
 		#region Euler's Rule
 
 		private int GetEulerPValue(int n)
