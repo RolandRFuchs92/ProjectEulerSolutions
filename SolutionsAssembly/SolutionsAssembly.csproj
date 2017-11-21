@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmicableNumbers.cs" />
     <Compile Include="CountingSundays.cs" />
     <Compile Include="Dry\DryCode.cs" />
     <Compile Include="EvenFibonacciNumbersSolutions.cs" />
