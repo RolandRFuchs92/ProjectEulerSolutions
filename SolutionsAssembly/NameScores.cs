@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace SolutionsAssembly
             string[] nameList = ReadNamesList();
             int[] scoreList = ScoreNames(nameList);
 
-            return "";
+            return scoreList.Sum().ToString();
         }
 
         private string[] ReadNamesList()
@@ -49,8 +50,9 @@ namespace SolutionsAssembly
             {
                 foreach (var chr in nameList[i])
                 {
-                    scoreName[i] += chr;
+                    scoreName[i] += (chr-64);
                 }
+                scoreName[i] *= i + 1;
             }
 
             return scoreName;
