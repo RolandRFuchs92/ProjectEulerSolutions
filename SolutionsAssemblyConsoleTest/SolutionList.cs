@@ -36,6 +36,7 @@ namespace SolutionsAssemblyConsoleTest
 			solutionList.Add(new CountingSundays());
 			solutionList.Add(new FactorialDigitSum());
 			solutionList.Add(new AmicableNumbers());
+            solutionList.Add(new NameScores());
         }
 
     }
