@@ -58,6 +58,7 @@
     <Compile Include="LongestCollatzSequence.cs" />
     <Compile Include="MaximumPathSum1.cs" />
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
+    <Compile Include="NameScores.cs" />
     <Compile Include="NumberLetterCounts.cs" />
     <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +67,9 @@
     <Compile Include="SummationOfPrimes.cs" />
     <Compile Include="SumSquareDifference.cs" />
     <Compile Include="_10001stPrime.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\NameList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
