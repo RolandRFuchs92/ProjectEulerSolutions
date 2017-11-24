@@ -29,7 +29,6 @@ What is the sum of the digits of the number 21000?";
 		private string PowerCalculator(int coefficient,int powerOf)
 		{
 			string powerHolder = coefficient.ToString();
-			int savedVal = 0;
 
 			for (int power = 0; power < (powerOf-1); power++) //run through the current value "x" number of times
 			{
