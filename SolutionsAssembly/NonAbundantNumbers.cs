@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SolutionsAssembly.Dry;
 
 namespace SolutionsAssembly
 {
@@ -19,6 +20,7 @@ As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest numb
 
 Find the sum of all the positive integers which cannot be written as the sum of two abundant numbers.";
         public int ProblemNumber => 23;
+        public int _limmit = 28123;
 
         public string Solution()
         {
@@ -27,61 +29,37 @@ Find the sum of all the positive integers which cannot be written as the sum of 
 
         private string ProblemSolution()
         {
-            return SumOfNonAbundantNumbers().ToString();
+            var abundantSums = 0;
+            var abundantSumsList = GetAbundantSums(GetAbundantNumberList());
+            for (int i = 0; i < _limmit; i++)
+                abundantSums += !abundantSumsList.Contains(i) ? i : 0;
+
+            return abundantSums.ToString();
         }
 
-        private long SumOfNonAbundantNumbers()
+        private List<int> GetAbundantNumberList()
         {
-            long total = 0;
-            long abundantSum = AbundantListTotal();
-            long integersSum = Enumerable.Range(1,28123).ToList().Sum();
-            total = integersSum - abundantSum;
-
-            return total;
-        }
-
-        private long AbundantListTotal()
-        {
-            var nonAbundantList = new List<int>();
             var abundantList = new List<int>();
-            for (var n = 12; n < 28124; n++)
+
+            for (int i = 1; i < _limmit; i++)
             {
-                var abun = Enumerable.Range(1,n/2).Where(inc => n % inc == 0).ToList();
-                var sumTotal = abun.ToArray().Sum();
-
-                if (sumTotal > n)
-                    abundantList.Add(n);
-                else
-                    continue;
-
-                if (abundantList.Where(i => i == n / 2).FirstOrDefault() != 0)
-                    continue;
-
-                if (!NonPairedAbundantNumber(abundantList))
-                    nonAbundantList.Add(n);
+                if (DryCode.IsPrime(i)) continue;                                                   // if its a prime, move along. 
+                var abund = Enumerable.Range(1, i / 2).Where(inc => i % inc == 0).ToArray();        
+                if (abund.Sum() > i)                                                                // if the number is abundant, add to list
+                    abundantList.Add(i);
             }
-            return abundantList.Sum() - nonAbundantList.Sum();
+            return abundantList;
         }
 
-        private bool NonPairedAbundantNumber(List<int> abundandList)
+        private List<int> GetAbundantSums(List<int> abundantList)
         {
-            for (int outer = 0; outer < abundandList.Count -2; outer++)
-            {
-                for (int inner = 0; inner < abundandList.Count-2; inner++)
-                {
-                    if (outer==inner) continue;
+            var abundantSums = new List<int>();
 
-                    if (abundandList[outer] + abundandList[inner] == abundandList[abundandList.Count - 1])
-                    {
-                        //using (StreamWriter sw = File.AppendText(@"C:/Temp/temp.txt"))
-                        //    sw.WriteLine($"{abundandList[outer]},{abundandList[inner]},{abundandList[abundandList.Count - 1]}");
+            for (int a = 0; a < abundantList.Count; a++)
+                for (int b = 0; b < abundantList.Count; b++)
+                    abundantSums.Add(abundantList[a] + abundantList[b]);
 
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return abundantSums.Distinct().ToList();
         }
-
     }
 }
