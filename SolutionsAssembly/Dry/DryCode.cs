@@ -50,7 +50,6 @@ namespace SolutionsAssembly.Dry
 			return gridArray;
 		}
 
-
 		/// <summary>
 		/// Converts a grid to a specific 2D array in integer format.
 		/// </summary>

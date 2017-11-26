@@ -59,6 +59,7 @@
     <Compile Include="MaximumPathSum1.cs" />
     <Compile Include="MultiplesOfThreeAndFiveSolutions.cs" />
     <Compile Include="NameScores.cs" />
+    <Compile Include="NonAbundantNumbers.cs" />
     <Compile Include="NumberLetterCounts.cs" />
     <Compile Include="PowerDigitSum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

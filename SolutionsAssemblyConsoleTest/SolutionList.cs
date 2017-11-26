@@ -37,6 +37,7 @@ namespace SolutionsAssemblyConsoleTest
 			solutionList.Add(new FactorialDigitSum());
 			solutionList.Add(new AmicableNumbers());
             solutionList.Add(new NameScores());
+            solutionList.Add(new NonAbundantNumbers());
         }
 
     }
